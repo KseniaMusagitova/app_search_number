@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Data entry form</h1>
+        <br>
+        <br>
+            <p>Enter the serial number:</p>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.serial_number }}<br>
+                {{ form.operator_remarks }}<br>
+                <button type="submit" class="btn btn-success">Add</button>
+                <span>{{ data_error }}</span>
+            </form>
+        <br>
+            <p>Last 4 entered serial numbers:</p>
+            {% for el in data %}
+                <div class="alert alert-warning mt-2">
+                    <h3>{{ el.serial_number }}</h3>
+                    <p>{{ el.operator_remarks }}</p>
+                </div>
+            {% endfor %}
+
+
+
+    </div>
+</body>
+</html>

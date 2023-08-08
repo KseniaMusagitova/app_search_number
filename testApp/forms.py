@@ -17,4 +17,8 @@ class DashboardForm(ModelForm):
                 'placeholder': 'Enter a comment'
             }),
         }
-
+class SearchForm(forms.Form):
+    serial_number = forms.CharField(label='Serial Number', max_length=20, widget=forms.TextInput(attrs={
+        "class": 'form-control',
+        'placeholder': 'Search the serial number'
+    }))

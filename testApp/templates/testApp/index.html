@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <br>
         <h1>Data entry form</h1>
         <br>
         <br>
@@ -17,7 +18,7 @@
                 {{ form.serial_number }}<br>
                 {{ form.operator_remarks }}<br>
                 <button type="submit" class="btn btn-success">Add</button>
-                <span>{{ data_error }}</span>
+                <span>{{ error }}</span>
             </form>
         <br>
             <p>Last 4 entered serial numbers:</p>
@@ -27,7 +28,8 @@
                     <p>{{ el.operator_remarks }}</p>
                 </div>
             {% endfor %}
-
+        <br>
+        <a href="{% url 'search_serial_number' %}">Search the serial number</a>
 
 
     </div>

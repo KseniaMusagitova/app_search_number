@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h1>Search Form</h1>
+        <br>
+        <br>
+        <p>Search the serial number:</p>
+            <form method="POST">
+                {% csrf_token %}
+                {{ searchform.serial_number }}<br>
+                <button type="submit" class="btn btn-success">Add</button>
+                <span>{{ error }}</span>
+            </form>
+        <br>
+        {% if search_result %}
+            <p>Search result:</p>
+            <div class="alert alert-warning mt-2">
+                <h3>{{ search_result.serial_number }}</h3>
+                <p>{{ search_result.operator_remarks }}</p>
+            </div>
+        {% else %}
+            <p>No matching serial number found.</p>
+        {% endif %}
+        <br>
+        <a href="{% url 'home' %}">Go back</a>
+    </div>
+</body>
+</html>

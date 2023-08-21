@@ -8,25 +8,34 @@
 <body>
     <div class="container">
         <br>
-        <h1>Search Form</h1>
-        <br>
-        <br>
-        <p>Search the serial number:</p>
+        <h4>SEARCH FORM FOR WORK ORDER</h4>
+<br>
             <form method="POST">
-                {% csrf_token %}
-                {{ searchform.serial_number }}<br>
-                <button type="submit" class="btn btn-success">Add</button>
+                <div class="row">
+                    <div class="col">
+                        {% csrf_token %}
+                        {{ searchform.work_order }}<br>
+                        </div>
+                <button type="submit" class="btn btn-success">SEND</button>
                 <span>{{ error }}</span>
+                </div>
             </form>
         <br>
         {% if search_result %}
-            <p>Search result:</p>
-            <div class="alert alert-warning mt-2">
-                <h3>{{ search_result.serial_number }}</h3>
-                <p>{{ search_result.operator_remarks }}</p>
-            </div>
+            <p>SEARCH RESULT:</p>
+            <table class="table table-striped">
+                   <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{ search_result.work_order }}</td>
+                        <td>{{ search_result.gap }}</td>
+                        <td>{{ search_result.data_time }}</td>
+                        <td>{{ search_result.operator_remarks }}</td>
+                    </tr>
+                    </tbody>
+                </table>
         {% else %}
-            <p>No matching serial number found.</p>
+            <p>Not found. Enter the work order</p>
         {% endif %}
         <br>
         <a href="{% url 'home' %}">Go back</a>

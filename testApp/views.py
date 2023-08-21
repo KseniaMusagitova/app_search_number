@@ -27,7 +27,7 @@ def dashboard(request):
     return render(request, 'testApp/index.html', context)
 
 
-def search_serial_number(request):
+def search_work_order(request):
     error = ''
     search_result = None
 
@@ -35,8 +35,8 @@ def search_serial_number(request):
         searchform = SearchForm(request.POST)
 
         if searchform.is_valid():
-            search_serial_number = searchform.cleaned_data['serial_number']
-            search_result = Dashboard.objects.filter(serial_number=search_serial_number).first()
+            search_work_order = searchform.cleaned_data['work_order']
+            search_result = Dashboard.objects.filter(work_order=search_work_order).first()
 
         else:
             error = 'Invalid search form submission'

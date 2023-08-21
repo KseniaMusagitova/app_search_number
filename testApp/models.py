@@ -3,12 +3,12 @@ from django.db import models
 
 # Create your models here.
 class Dashboard(models.Model):
-    serial_number = models.CharField(max_length=20, blank=True, null=True)
+    work_order = models.CharField(max_length=20, blank=True, null=True)
+    gap = models.CharField(max_length=100, blank=True, null=True)
+    data_time = models.DateTimeField()
     operator_remarks = models.CharField(max_length=100, blank=True, null=True)
 
 
-    def __str__(self):
-        return self.serial_number
 
     class Meta:
         verbose_name = "Dashboard"

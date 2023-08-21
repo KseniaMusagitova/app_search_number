@@ -9,29 +9,52 @@
 <body>
     <div class="container">
         <br>
-        <h1>Data entry form</h1>
+        <h4>DATA ENTRY FORM</h4>
         <br>
-        <br>
-            <p>Enter the serial number:</p>
             <form method="POST">
-                {% csrf_token %}
-                {{ form.serial_number }}<br>
-                {{ form.operator_remarks }}<br>
-                <button type="submit" class="btn btn-success">Add</button>
+                <div class="row">
+                    <div class="col">
+                        {% csrf_token %}
+                        {{ form.work_order }}<br>
+                    </div>
+                    <div class="col">
+                        {{ form.gap }}<br>
+                    </div>
+                    <div class="col">
+                        {{ form.data_time }}<br>
+                    </div>
+                    <div class="col">
+                        {{ form.operator_remarks }}<br>
+                    </div>
+
+                <button type="submit" class="btn btn-success">SEND</button>
                 <span>{{ error }}</span>
+
+                </div>
             </form>
         <br>
-            <p>Last 4 entered serial numbers:</p>
+
+            <h4>LAST FOUR DATA ENTRY</h4>
+        <br>
             {% for el in data %}
-                <div class="alert alert-warning mt-2">
-                    <h3>{{ el.serial_number }}</h3>
-                    <p>{{ el.operator_remarks }}</p>
-                </div>
+                <table class="table table-striped">
+                   <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{ el.work_order }}</td>
+                        <td>{{ el.gap }}</td>
+                        <td>{{ el.data_time }}</td>
+                        <td>{{ el.operator_remarks }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
             {% endfor %}
         <br>
-        <a href="{% url 'search_serial_number' %}">Search the serial number</a>
-
-
+        <a href="{% url 'search_work_order' %}">To do read query from the database base on a string serial number</a>
+        <br>
+        <br>
+        <br>
     </div>
 </body>
 </html>

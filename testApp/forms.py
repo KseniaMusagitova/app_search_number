@@ -1,24 +1,35 @@
 from .models import Dashboard
-from django.forms import ModelForm, TextInput, Textarea
+from django.forms import ModelForm, TextInput, Textarea, DateTimeInput
 from django import forms
 
 
 class DashboardForm(ModelForm):
     class Meta:
         model = Dashboard
-        fields = ["serial_number", "operator_remarks"]
+        fields = "__all__"
         widgets = {
-            "serial_number": TextInput(attrs={
+            "work_order": TextInput(attrs={
                 "class": 'form-control',
-                'placeholder': 'Enter the serial number'
+                'placeholder': 'WORK ORDER'
+            }),
+            "gap": TextInput(attrs={
+                "class": 'form-control',
+                'placeholder': 'GAP'
+            }),
+            "data_time": forms.DateTimeInput(attrs={
+                "class": 'form-control',
+                'placeholder': 'DATA TIME',
+                'type': 'datetime-local'
             }),
             "operator_remarks": TextInput(attrs={
                 "class": 'form-control',
-                'placeholder': 'Enter a comment'
+                'placeholder': "OPERATOR REMARKS"
             }),
         }
+
+
 class SearchForm(forms.Form):
-    serial_number = forms.CharField(label='Serial Number', max_length=20, widget=forms.TextInput(attrs={
+    work_order = forms.CharField(label='Work order', max_length=20, widget=forms.TextInput(attrs={
         "class": 'form-control',
-        'placeholder': 'Search the serial number'
+        'placeholder': 'Search the work order'
     }))
